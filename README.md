@@ -51,7 +51,7 @@ Table of Contents
 11. [Edit the Podfile](#edit-the-podfile)
 12. [Adding Orion360 SDK Pro to our project](#adding-orion360-sdk-pro-to-our-project)
 13. [Start new Xcode session](#start-new-xcode-session)
-14. [Working on OrionPro-VideoPlayer xcworkspace](#working-on-OrionPro-VideoPlayer-xcworkspace)
+14. [Working on OrionPro-VideoPlayer xcworkspace](#working-on-orionpro-videoplayer-xcworkspace)
 15. [Objective-C bridging header for Swift projects](#objective-c-bridging-header-for-swift-projects)
 16. [Obtaining License File](#obtaining-license-file)
 17. [Let us start to have fun with coding](#let-us-start-to-have-fun-with-coding)
