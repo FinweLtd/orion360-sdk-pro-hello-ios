@@ -174,7 +174,7 @@ As seen in Figure 5, CocoaPods is not yet added to our project. Step 2 of this d
 
 ## Getting started with Podfile
 
-Go to terminal and navigate to project directory (OrionImageViewer). You can navigate using two ways. Either by navigating to project directory using cd \[type directory name\] or simply type cd and drag & drop your project directory on terminal and terminal will insert directory path for you, then press Return key (↵).
+Go to terminal and navigate to project directory (OrionPro_VideoPlayer). You can navigate using two ways. Either by navigating to project directory using cd \[type directory name\] or simply type cd and drag & drop your project directory on terminal and terminal will insert directory path for you, then press Return key (↵).
 
 	cd <drag and drop your project folder> 
 
@@ -227,7 +227,7 @@ After few minutes you will see a log something like Figure 8 on your terminal.
 
 ![screen shot 2018-03-14 at 13 29 00](https://user-images.githubusercontent.com/36510685/37399874-bb801f8a-278b-11e8-84cc-44b9c0c57a36.png)
 
-Figure 8. Orion360 SDK installation completed
+Figure 8. Orion360 SDK Pro installation completed
 
 If you see message “Pod installation complete!”, you are ready to add our Orion360 SDK Pro to your project and start to have fun :)
 
@@ -246,7 +246,7 @@ After successful pod installation, on the terminal you will see:
 
 Figure 10. OrionPro_VideoPlayer.xcworkspace
 
-Notice: Whenever there will be a new update to the Orion360 SDK, go back to Step 2 and write pod update command and press Return key, and SDK will be updated right away.
+Notice: Whenever there will be a new update to the Orion360 SDK Pro, go back to [Getting started with Podfile](#getting-started-with-podfile) step and write pod update command instead of pod install and press Return key, and SDK will be updated right away.
 
 	pod update 
 
@@ -270,7 +270,7 @@ Note that the license file need to be given.
 	NSURL *licenseUrl = [NSURL fileURLWithPath:path];
 	[orionView setLicenseFileUrl:licenseUrl];
 
-For Swift projects you need to create bridging header. Please follow Step 9. (For Objective-C projects, skip Step 9 and jump to Step 10 to learn how you can acquire Orion360 SDK Pro license file.)
+For Swift projects you need to create bridging header. Please follow Step 9. (For Objective-C projects, skip Objective-C bridging step and jump to [Obtaining License File](#obtaining-license-file) to learn how you can acquire Orion360 SDK Pro license file.)
 
 ## Objective-C bridging header for Swift projects
 
