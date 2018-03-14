@@ -260,7 +260,7 @@ Figure 11. OrionPro_VideoPlayer’s project structure after pod install
 
 The Orion360 SDK Pro can be used for both Objective-C and swift project. For Objective-C project you simply import OrionView (#import <orion360-sdk-pro-ios/OrionView.h>) header and initialize it as follows:
 
-	 OrionView *_orionView = [[OrionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)]; 
+	OrionView *orionView = [[OrionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)]; 
 	orionView.delegate = self;
   
 Note that the license file need to be given.
