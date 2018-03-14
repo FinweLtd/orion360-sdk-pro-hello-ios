@@ -55,7 +55,7 @@ Table of Contents
 15. [Objective-C bridging header for Swift projects](#objective-c-bridging-header-for-swift-projects)
 16. [Obtaining License File](#obtaining-license-file)
 17. [Let us start to have fun with coding](#let-us-start-to-have-fun-with-coding)
-18. [Run OrionImageViewer](#run-orionimageviewer)
+18. [Run OrionPro-VideoPlayer](#run-orionpro-videoplayer)
 19. [Next Steps](#next-steps)
 20. [Feedback and support](#feedback-and-support)
 
@@ -252,18 +252,269 @@ Notice: Whenever there will be a new update to the Orion360 SDK, go back to Step
 
 ## Working on OrionPro-VideoPlayer xcworkspace
 
-After opening OrionImageViewer.xcworkspace you can see the SDK is successfully added to our project (see Figure 11).
+After opening OrionPro_VideoPlayer.xcworkspace you can see the SDK is successfully added to our project (see Figure 11).
+
+![screen shot 2018-03-14 at 13 48 42](https://user-images.githubusercontent.com/36510685/37400734-80a6c758-278e-11e8-958b-8cd4f1fb9a07.png)
+
+Figure 11. OrionPro_VideoPlayer’s project structure after pod install
+
+The Orion360 SDK Pro can be used for both Objective-C and swift project. For Objective-C project you simply import OrionView (#import <orion360-sdk-pro-ios/OrionView.h>) header and initialize it as follows:
+
+	OrionView orion1View = \[\[Orion1View alloc\] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)\];  
+	orion1View.delegate = self;
+  
+Note that the license file need to be given.
+
+	NSString *licenseFile = [NSString stringWithFormat:@"license.key.lic"];
+	NSString* path = [[NSBundle mainBundle] pathForResource:licenseFile ofType:nil];
+	NSURL *licenseUrl = [NSURL fileURLWithPath:path];
+	[orionView setLicenseFileUrl:licenseUrl];
+
+For Swift projects you need to create bridging header. Please follow Step 9. (For Objective-C projects, skip Step 9 and jump to Step 10 to learn how you can acquire Orion360 SDK Pro license file.)
+
+## Objective-C bridging header for Swift projects
+
+Create bridging header as follows:
+
+File > New > File > (iOS, watchOS, tvOS, or macOS) > Source > Objective-C File
+
+![screen shot 2018-02-21 at 12 18 24](https://user-images.githubusercontent.com/36510685/37401202-fa412ec2-278f-11e8-99a1-e45485851d83.png)
+
+Figure 12. Create new Objective-C file for bridging header
+
+![screen shot 2018-03-14 at 14 01 32](https://user-images.githubusercontent.com/36510685/37401292-46e47a68-2790-11e8-9c98-4c5946fe41c6.png)
+
+Figure 13. Create new Objective-C file for bridging header
+
+Give file name which is similar to your project name for this example "OrionPro_VideoPlayer" and press Next, and save it in the same directory as your project.
+
+If you accept, Xcode creates the header file along with the file you were creating, and names it by your product module name followed by "-Bridging-Header.h". When you press Create you will see a dialog message (see Figure 15) and click on “Create Bridging Header”.
+
+images.githubusercontent.com/36510685/37401384-8fe4c8d0-2790-11e8-888d-34829a40a019.png)
+
+Figure 14. Creating bridging header
+
+![screen shot 2018-03-14 at 14 05 09](https://user-images.githubusercontent.com/36510685/37401449-bfafa8e6-2790-11e8-867c-74a0302a3584.png)
+
+Figure 15. OrionPro_VideoPlayer’s project structure after creating bridging header
+
+Now open OrionPro_VideoPlayer-Bridging-Header and type import "orion360-sdk-pro-ios/OrionView.h" and save the file. 
+
+![screen shot 2018-03-14 at 14 06 48](https://user-images.githubusercontent.com/36510685/37401527-f924659e-2790-11e8-8fcf-2a54fb737969.png)
+
+Figure 16. Importing Orion360 SDK Pro using import statement
+
+After creating bridging header find the class line, which should look like this: class ViewController: UIViewController {
+
+After UIViewController, add a comma (,) and OrionViewDelegate, OrionVideoContentDelegate and initialize OrionView as follows:
+
+	let orionView = OrionView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))  
+	orionView.delegate = self
+
+And license file is given as follows:
+
+	let licenseFile = "Orion360_SDK_Pro_iOS_Trial_fi.finwe.OrionVideoPlayer.lic"
+        let path: String? = Bundle.main.path(forResource: licenseFile, ofType: nil)
+	let licenseUrl = URL(fileURLWithPath: path ?? "")
+	orionView.licenseFileUrl = licenseUrl
+
+## Obtaining License File
+
+To show 360° content you need a license file that must be added to your app project's resources without any modification. Failure to do so will result to black video player screen and currently, it doesn't produce any warning messages.
+
+Orion360 SDK Pro is a commercial product and requires a license file to work. An evaluation license is provided with the sample app. You can get a watermarked evaluation license file also for your own bundle identifier by creating an account to [https://store.make360app.com](https://store.make360app.com/), starting a new SDK project, providing your own package name, and selecting FREE Trial.
+
+Please follow these steps to obtain License File:
+1.  Go to  [https://store.make360app.com](https://store.make360app.com/).
+    
+2.  Sign in if you have an existing account with us or Sign up if you are a new user.
+    
+3.  After successful login click on New SKD Project button.
+<img width="150" alt="screen shot 2018-03-14 at 14 15 35" src="https://user-images.githubusercontent.com/36510685/37401873-36820558-2792-11e8-9a0b-ca3d8ce72e6b.png">
+
+4.  Give Project Name, and Package Identifier as they are written on Identity section.    
+![screen shot 2018-03-14 at 14 18 48](https://user-images.githubusercontent.com/36510685/37402014-aae68ab8-2792-11e8-99c1-275f6b85d9f2.png)
+
+Figure 17. Select your project from target
+
+Click on your project from Project Navigator > Select your target > choose General > Identify
+
+<img width="701" alt="screen shot 2018-03-14 at 14 30 00" src="https://user-images.githubusercontent.com/36510685/37402494-7a07b1c2-2794-11e8-9347-a91c18c4f364.png">
+
+Figure 18. Bundle Identifier = Package Identifier, Display Name = Project Name
+
+5.  Select iOS on Platforms section.
+
+<img width="504" alt="screen shot 2018-03-14 at 14 33 11" src="https://user-images.githubusercontent.com/36510685/37402589-dde8fbec-2794-11e8-9f73-7098c4b9336f.png">
+
+Figure 19. Target platforms
+
+6.  Choose type of license, payment method.
+
+<img width="236" alt="screen shot 2018-03-14 at 14 36 26" src="https://user-images.githubusercontent.com/36510685/37402662-1dc6364e-2795-11e8-9e6f-17e8d9ac2006.png">
+
+Figure 20. Payment method
+
+And click on Free Trial or Purchase.
+
+7.  Read and agree to our terms and regulations.
+    
+
+Click on Accept after reading Orion360 SDK Basic Evaluation End-User License Agreement (EULA)
+
+![screen shot 2018-02-21 at 13 21 59](https://user-images.githubusercontent.com/36510685/37403063-4c8283ec-2796-11e8-9d8c-d5de7c14e218.png)
+
+Figure 21. Orion360 SDK’s EULA
+
+Once again click Accept to Terms & Conditions.
+
+![screen shot 2018-02-21 at 13 23 11](https://user-images.githubusercontent.com/36510685/37403078-59450190-2796-11e8-82a0-73443bd87fe9.png)
+
+Figure 22. Orion360 SDK’s Terms & Conditions
+
+After accepting both terms, you will get a notification which says “Your new licenses are ready to be downloaded. Scroll down to the Downloads section to get them”.
+
+<img width="351" alt="screen shot 2018-03-14 at 14 37 52" src="https://user-images.githubusercontent.com/36510685/37403242-d4438eb6-2796-11e8-960f-4e378c61afc1.png">
+
+Figure 23. Downloads for extracted license
+
+Click on “Download iOS Pro Trial License”.
+
+8.  Add the downloaded license to your project
+   
+Extract the download file.  
+Select “Orion360_SDK_Pro_iOS_Trial_fi.finwe.OrionPro-VideoPlayer.lic“, drag the file and drop it inside Project navigator under your project folder and click Finish.
+
+![screen shot 2018-03-14 at 14 56 48](https://user-images.githubusercontent.com/36510685/37403629-276fb9ba-2798-11e8-858e-b0a9b6d3dd96.png)
+
+Figure 24. Adding license file (.lic) to project directory
+
+![screen shot 2018-03-14 at 14 57 16](https://user-images.githubusercontent.com/36510685/37403633-29cbd784-2798-11e8-8fc4-a6410a098e92.png)
+
+Figure 25. Project structure after license file added
+
+## Let us start to have fun with coding
+Swift
+
+	//  ViewController.swift
+	//  OrionPro_VideoPlayer
+	//
+	//  Created by Tewodros Mengesha on 14/03/2018.
+	//  Copyright © 2018 Finwe Ltd. All rights reserved.
+	//
+
+	/**
+	 * OrionPro_Player implements a minimal Orion video player. It plays
+	 * a video file from url using OrionView's default settings.
+	 *
+	 * Features:
+	 * - Plays one hardcoded 360x180 equirectangular video
+	 * - Auto-starts playback on load
+	 * - Stops after playback is finished
+	 * - Sensor fusion (acc+mag+gyro+touch)
+	 * - Panning (gyro, swipe)
+	 * - Zooming (pinch)
+	 * - Fullscreen view locked to landscape
+	 */
+
+	import UIKit
+	import Foundation
+
+	class ViewController: UIViewController, OrionViewDelegate, OrionVideoContentDelegate{
+
+	    var orionView: OrionView!
+	    var videoContent: OrionVideoContent!
+	    var viewPort: OrionViewport!
+	    override func viewDidLoad() {
+		super.viewDidLoad()
+		// Do any additional setup after loading the view, typically from a nib.
+
+	    }
+
+	    override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		//view.backgroundColor = UIColor.clear
+		// Dispose of any resources that can be recreated.
+	    }
+	    override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 
 
+		if orionView == nil {
+
+		    //Create an instance of OrionView
+		    orionView = OrionView()
+		    orionView.delegate = self
+		    orionView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+
+		    // Check if license file exists
+		    let licenseFile = "Orion360_SDK_Pro_iOS_Trial_fi.finwe.OrionPro-VideoPlayer.lic"
+		    let path: String? = Bundle.main.path(forResource: licenseFile, ofType: nil)
+		    var isDir: ObjCBool = false
+		    let fileManager = FileManager.default
+
+		    if fileManager.fileExists(atPath: path!, isDirectory:&isDir)
+		    {
+			let licenseUrl = URL(fileURLWithPath: path ?? "")
+			//If license file found, assign it to orionView's licenceFileUrll
+			orionView.licenseFileUrl = licenseUrl
+		    }
+		    else {
+			print("No license file found.")
+		    }
+
+		    self.view.addSubview(orionView)
+		    orionView.overrideSilentSwitch = true
+		    orionView.alpha = 0.0
+
+		    //Create an instance of OrionVideoContent
+		    videoContent = OrionVideoContent()
+		    videoContent.delegate = self
+
+		    let videoUrl = URL(string: "https://player.vimeo.com/external/187645100.m3u8?s=2fb48fc8005cebe2f10255fdc2fa1ed6da59ea53")
+		    videoContent.uriArray = [videoUrl!]
+		    orionView.add(videoContent)
+
+		    viewPort = OrionViewport(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height), lockInPosition: false)
+		    viewPort.viewportConfig.fullScreenEnabled = true
+		    orionView.add(viewPort, orionContent: videoContent)
+
+		}
+
+	    }
+
+	    func orionVideoContentReady(toPlayVideo orionVideoContent: OrionVideoContent) {
+
+		UIView.animate(withDuration: 0.2, animations: {(_: Void) -> Void in
+		    self.orionView.alpha = 1.0
+		}, completion: {(_ finished: Bool) -> Void in
+		    orionVideoContent.play(0.0)
+		})
+		print("OrionVideoContentReady")
+
+	    }
+
+	    func orionVideoContentDidReachEnd(_ orionVideoContent: OrionVideoContent) {
+		orionVideoContent.seek(to: 0.0)
+	    }
 
 
+	}
+
+Note: If you are using images/video from URL, make sure your sources are from HTTPS. Apple’s ATS Policy,  App Transport Security start blocking a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
 
 
+## Run OrionPro-VideoPlayer 
+
+The Scheme pop-up menu lets you choose which simulator or device you’d like to run your app on. As seen on Figure 26 iPhone 8 Plus Simulator, not an iOS device.
+
+![screen shot 2018-03-14 at 15 20 36](https://user-images.githubusercontent.com/36510685/37404876-c7ab783a-279b-11e8-8559-3fec73585ebe.png)
+
+Figure 26. Xcode’s toolbar
+
+Save the changes and click the Run button <img width="20" alt="screen shot 2018-02-27 at 14 45 45" src="https://user-images.githubusercontent.com/36510685/37404973-0dc01a88-279c-11e8-9d58-045faf934d61.png"> or press ![screen shot 2018-02-27 at 16 23 48](https://user-images.githubusercontent.com/36510685/37404980-123a2ee6-279c-11e8-936c-0ec85a947b12.png) to build and run OrionPro_VideoPlayer and you are able to see a video in true 360° experience. Feel free to zoom, pan and swipe. 
 
 
-
-
---------------------------------------------
 ## Next Steps
 
 
