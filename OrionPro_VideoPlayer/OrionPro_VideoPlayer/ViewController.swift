@@ -56,7 +56,7 @@ class ViewController: UIViewController, OrionViewDelegate, OrionVideoContentDele
             var isDir: ObjCBool = false
             let fileManager = FileManager.default
             
-            if fileManager.fileExists(atPath: path!, isDirectory:&isDir)
+            if (path != nil && fileManager.fileExists(atPath: path!, isDirectory:&isDir))
             {
                 let licenseUrl = URL(fileURLWithPath: path ?? "")
                 //If license file found, assign it to orionView's licenceFileUrll
