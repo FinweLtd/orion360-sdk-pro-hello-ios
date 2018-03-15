@@ -447,13 +447,13 @@ Swift
 		    orionView.delegate = self
 		    orionView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
 
-		    // Check if license file exists
+		           // Check if license file exists
 		    let licenseFile = "Orion360_SDK_Pro_iOS_Trial_fi.finwe.OrionPro-VideoPlayer.lic"
 		    let path: String? = Bundle.main.path(forResource: licenseFile, ofType: nil)
 		    var isDir: ObjCBool = false
 		    let fileManager = FileManager.default
 
-		    if fileManager.fileExists(atPath: path!, isDirectory:&isDir)
+		    if (path != nil && fileManager.fileExists(atPath: path!, isDirectory:&isDir))
 		    {
 			let licenseUrl = URL(fileURLWithPath: path ?? "")
 			//If license file found, assign it to orionView's licenceFileUrll
