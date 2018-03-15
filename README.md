@@ -170,7 +170,7 @@ Xcode opens your new project in the workspace window (See Figure 5).
 
 Figure 5. OrionPro_VideoPlayer’s project workspace
 
-As seen in Figure 5, CocoaPods is not yet added to our project. Step 2 of this documentation will guide you through CocoaPods and SDK installation.
+As seen in Figure 5, CocoaPods is not yet added to our project. This documentation will guide you through CocoaPods and SDK installation.
 
 ## Getting started with Podfile
 
@@ -204,7 +204,7 @@ Figure 7. Podfile content before being edited
 
 ## Edit the Podfile
 
-Edit the Podfile content as follows to Install Orion360 SDK Pro for iOS:
+Edit the Podfile content as follows to Install Orion360 SDK Pro for iOS.
 
     source 'https://github.com/FinweLtd/orion360-sdk-pro-ios-specs.git'
     target 'OrionPro_VideoPlayer' do
@@ -270,7 +270,7 @@ Note that the license file need to be given.
 	NSURL *licenseUrl = [NSURL fileURLWithPath:path];
 	[orionView setLicenseFileUrl:licenseUrl];
 
-For Swift projects you need to create bridging header. Please follow Step 9. (For Objective-C projects, skip Objective-C bridging step and jump to [Obtaining License File](#obtaining-license-file) to learn how you can acquire Orion360 SDK Pro license file.)
+For Swift projects you need to create [Objective-C bridging header for Swift projects](#objective-c-bridging-header-for-swift-projects) to use OrionSDK Pro. For Objective-C projects, skip Objective-C bridging step and jump to [Obtaining License File](#obtaining-license-file) to learn how you can acquire Orion360 SDK Pro license file.
 
 ## Objective-C bridging header for Swift projects
 
@@ -288,9 +288,9 @@ Figure 13. Create new Objective-C file for bridging header
 
 Give file name which is similar to your project name for this example "OrionPro_VideoPlayer" and press Next, and save it in the same directory as your project.
 
-If you accept, Xcode creates the header file along with the file you were creating, and names it by your product module name followed by "-Bridging-Header.h". When you press Create you will see a dialog message (see Figure 15) and click on “Create Bridging Header”.
+If you accept, Xcode creates the header file along with the file you were creating, and names it by your product module name followed by "-Bridging-Header.h". When you press Create you will see a dialog message (see Figure 14) and click on “Create Bridging Header”.
 
-images.githubusercontent.com/36510685/37401384-8fe4c8d0-2790-11e8-888d-34829a40a019.png)
+![screen shot 2018-02-21 at 12 23 12](https://user-images.githubusercontent.com/36510685/37449105-b8d6be64-2831-11e8-9e35-7b068a101dc9.png)
 
 Figure 14. Creating bridging header
 
@@ -324,7 +324,7 @@ To show 360° content you need a license file that must be added to your app pro
 
 Orion360 SDK Pro is a commercial product and requires a license file to work. An evaluation license is provided with the sample app. You can get a watermarked evaluation license file also for your own bundle identifier by creating an account to [https://store.make360app.com](https://store.make360app.com/), starting a new SDK project, providing your own package name, and selecting FREE Trial.
 
-Please follow these steps to obtain License File:
+Please follow the steps below to obtain License File:
 1.  Go to  [https://store.make360app.com](https://store.make360app.com/).
     
 2.  Sign in if you have an existing account with us or Sign up if you are a new user.
@@ -506,7 +506,7 @@ Note: If you are using images/video from URL, make sure your sources are from HT
 
 ## Run OrionPro-VideoPlayer 
 
-The Scheme pop-up menu lets you choose which simulator or device you’d like to run your app on. As seen on Figure 26 iPhone 8 Plus Simulator, not an iOS device.
+The Scheme pop-up menu lets you choose which simulator or device you’d like to run your app on. On Figure 26 iPhone 8 Plus Simulator is selected.
 
 ![screen shot 2018-03-14 at 15 20 36](https://user-images.githubusercontent.com/36510685/37404876-c7ab783a-279b-11e8-8559-3fec73585ebe.png)
 
