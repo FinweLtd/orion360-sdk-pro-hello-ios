@@ -514,6 +514,8 @@ Figure 26. Xcode’s toolbar
 
 Save the changes and click the Run button <img width="20" alt="screen shot 2018-02-27 at 14 45 45" src="https://user-images.githubusercontent.com/36510685/37404973-0dc01a88-279c-11e8-9d58-045faf934d61.png"> or press ![screen shot 2018-02-27 at 16 23 48](https://user-images.githubusercontent.com/36510685/37404980-123a2ee6-279c-11e8-936c-0ec85a947b12.png) to build and run OrionPro_VideoPlayer and you are able to see a video in true 360° experience. Feel free to zoom, pan and swipe. 
 
+Completed version of OrionPro_Player can be downloaded [here](https://github.com/FinweLtd/orion360-sdk-pro-hello-ios.git).
+
 
 ## Next Steps
 
@@ -522,7 +524,7 @@ It is recommended to get familiar with the [wiki](https://github.com/FinweLtd/Or
 
 Take a look at the delivered sample apps to get more familier with our SDK. Sample projects are done using Objective-C and Swift. 
 Objective-C: [https://github.com/FinweLtd/orion360-sdk-pro-examples-ios](https://github.com/FinweLtd/orion360-sdk-pro-examples-ios), 
-Swift: 
+Swift: [https://github.com/FinweLtd/orion360-sdk-pro-examples-ios-swift](https://github.com/FinweLtd/orion360-sdk-pro-examples-ios-swift)
 
 Clone the projects and follow steps mentioned in [Getting started with Podfile](#getting-started-with-podfile). 
 
