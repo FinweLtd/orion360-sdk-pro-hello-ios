@@ -1,0 +1,6 @@
+framework module Pods_OrionPro_VideoPlayer {
+  umbrella header "Pods-OrionPro_VideoPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
