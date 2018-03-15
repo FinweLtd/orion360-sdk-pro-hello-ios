@@ -524,7 +524,7 @@ It is recommended to get familiar with the [wiki](https://github.com/FinweLtd/Or
 
 Take a look at the delivered sample apps to get more familier with our SDK. Sample projects are done using Objective-C and Swift. 
 Objective-C: [https://github.com/FinweLtd/orion360-sdk-pro-examples-ios](https://github.com/FinweLtd/orion360-sdk-pro-examples-ios), 
-Swift: 
+Swift: [https://github.com/FinweLtd/orion360-sdk-pro-examples-ios-swift](https://github.com/FinweLtd/orion360-sdk-pro-examples-ios-swift)
 
 Clone the projects and follow steps mentioned in [Getting started with Podfile](#getting-started-with-podfile). 
 
