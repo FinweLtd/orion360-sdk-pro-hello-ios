@@ -101,6 +101,24 @@ class ViewController: UIViewController, OrionViewDelegate, OrionVideoContentDele
         orionVideoContent.seek(to: 0.0)
     }
     
+    func orionVideoContentDidChangeBufferingStatus(_ orionVideoContent: OrionVideoContent!, buffering: Bool) {
+        
+        if(buffering)
+        {
+            print("buffer size: \(orionVideoContent.bufferSize)")
+            print("buffer time: \(orionVideoContent.availableTime)")
+        }
+    }
+    
+    func orionContentDidFail(toBecomeReady orionContent: OrionContent!, content: Any!) {
+        print("Orion did Fail to become ready")
+    }
+    
+    func orionVideoContentDidUpdateProgress(_ orionVideoContent: OrionVideoContent!, currentTime: CGFloat, availableTime: CGFloat, totalDuration: CGFloat) {
+        print("Current time: \(currentTime)")
+        print("Available time: \(availableTime)")
+        print("Total duration: \(totalDuration)")
+    }
     
 }
 
